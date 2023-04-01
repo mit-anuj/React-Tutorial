@@ -19,10 +19,10 @@ export default function TextField(props) {
     }
     const hanldeTitleCase = () => {
         const newText = text.split(' ');
-        let finalText="", newWord;
-        for(let word of newText){
-            newWord= word.charAt(0).toUpperCase() + word.substring(1);
-            finalText = finalText+newWord+" ";
+        let finalText = "", newWord;
+        for (let word of newText) {
+            newWord = word.charAt(0).toUpperCase() + word.substring(1);
+            finalText = finalText + newWord + " ";
         }
         setText(finalText);
     }
@@ -33,14 +33,17 @@ export default function TextField(props) {
 
     return (
         <>
-            <div className='container'>
+            <div className={`container text-${props.mode === 'light' ? 'dark' : 'light'}`}>
                 {/* //!here we are using props which allows us to change the value according to the user input. 
             //! we need to pass the prop as an argument in the function.*/}
                 <h1>{props.heading}</h1>
-                <div className="mb-3">
+                <div className="mb-3 ">
                     {/* <label for="Mybox" className="form-label">Example textarea</label> */}
                     {/* //! here we are using the user input as an attribute in html tag so it is called as "states". */}
-                    <textarea className="form-control" value={text} onChange={handleOnChange} id="Mybox" rows="8" placeholder='Enter your text here'></textarea>
+                    <textarea className="form-control " value={text} onChange={handleOnChange} style={{
+                        backgroundColor: props.mode === 'light' ? 'white' : '#04293a',
+                        color: props.mode === 'light' ? 'black' : 'white'
+                    }} id="Mybox" rows="8" placeholder='Enter your text here'></textarea>
                 </div>
                 <button className="btn btn-primary mx-2" onClick={hanldeUpCase}>Convert to Uppercase</button>
                 <button className="btn btn-primary mx-2" onClick={hanldeLoCase}>Convert to Lowercase</button>
@@ -49,13 +52,13 @@ export default function TextField(props) {
 
 
             </div>
-            <div className="container my-100">
+            <div className={`container text-${props.mode === 'light' ? 'dark' : 'light'}`}>
                 <h1> Your text summary</h1>
                 <p>{text.split(" ").length} words and {text.length} characters</p>
                 <p>{0.008 * text.split(" ").length} Minutes read</p>
             </div>
-            <h2>Preview</h2>
-            <p>{text}</p>
+            <h2 className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}> Preview</h2>
+            <p className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}>{text.length>0 ?text:"Enter something to preview it here"}</p>
         </>
     )
 }
