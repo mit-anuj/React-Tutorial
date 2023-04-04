@@ -9,13 +9,18 @@ export default function TextField(props) {
     const hanldeUpCase = () => {
         // console.log('button clicked')
         setText(text.toUpperCase());
+        props.showAlert("converted to uppercase","success")
     }
     const hanldeLoCase = () => {
         // console.log('button clicked')
         setText(text.toLowerCase());
+        props.showAlert("converted to lowercase","success")
+
     }
     const hanldeClearAll = () => {
         setText('');
+        props.showAlert("cleared","success")
+
     }
     const hanldeTitleCase = () => {
         const newText = text.split(' ');
@@ -25,6 +30,8 @@ export default function TextField(props) {
             finalText = finalText + newWord + " ";
         }
         setText(finalText);
+        props.showAlert("converted to titlecase","success")
+
     }
     const handleOnChange = (event) => {
         setText(event.target.value);
