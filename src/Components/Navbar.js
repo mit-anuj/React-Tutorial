@@ -22,15 +22,21 @@ export default function Navbar(props) {
                     </ul>
                     {/* <form className="d-flex" role="search">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                        <button className="btn btn-outline-success
+                        " type="submit">Search</button>
                     </form> */}
-                    <div className={`form-check form-switch text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
-                        <input className="form-check-input mx-1" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enbale {props.mode === 'dark' ? 'Light' : 'Dark'} Mode</label>
-                    </div>
+
                 </div>
+                <button type="button" onClick={props.toggleMode} value='green'className="btn btn-success">green</button>
+                <button type="button" onClick={props.toggleMode} value='blue' className="btn btn-primary">blue</button>
+                <button type="button" onClick={props.toggleMode} value='light' className="btn btn-light">Light</button>
+                {/* disabled switch */}
+                {/* <div className={`form-check form-switch text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
+                    <input className="form-check-input mx-1" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                    <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enbale {props.mode === 'dark' ? 'Light' : 'Dark'} Mode</label>
+                </div> */}
             </div>
-        </nav>
+        </nav >
 
     )
 }

@@ -25,11 +25,15 @@ function App() {
       setMode("dark")
       document.body.style.backgroundColor='#041c32'
       showAlert("dark mode has been enabled","success");
+      //* through this we can change the title dynamically.
+      document.title= 'TextUtils - Dark Mode'
     }
     else{
       setMode("light");
       document.body.style.backgroundColor='white'
       showAlert("light mode has been enabled","success");
+      document.title= 'TextUtils - Light Mode'
+
     }
   }
   return (
