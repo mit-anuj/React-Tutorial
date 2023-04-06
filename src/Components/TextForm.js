@@ -35,12 +35,11 @@ export default function TextField(props) {
     }
     const handleOnChange = (event) => {
         setText(event.target.value);
-        // console.log('change handled!');
     }
 
     return (
         <>
-            <div className={`container text-${props.mode === 'light' ? 'dark' : 'light'}`}>
+            <div className={`container text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
                 {/* //!here we are using props which allows us to change the value according to the user input. 
             //! we need to pass the prop as an argument in the function.*/}
                 <h1>{props.heading}</h1>
@@ -48,7 +47,7 @@ export default function TextField(props) {
                     {/* <label for="Mybox" className="form-label">Example textarea</label> */}
                     {/* //! here we are using the user input as an attribute in html tag so it is called as "states". */}
                     <textarea className="form-control " value={text} onChange={handleOnChange} style={{
-                        backgroundColor: props.mode === 'light' ? 'white' : '#04293a',
+                        backgroundColor: props.mode === 'dark' ? '#04293a' : 'white',
                         color: props.mode === 'light' ? 'black' : 'white'
                     }} id="Mybox" rows="8" placeholder='Enter your text here'></textarea>
                 </div>
