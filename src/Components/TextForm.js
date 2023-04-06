@@ -51,20 +51,21 @@ export default function TextField(props) {
                         color: props.mode === 'light' ? 'black' : 'white'
                     }} id="Mybox" rows="8" placeholder='Enter your text here'></textarea>
                 </div>
-                <button className="btn btn-primary mx-2" onClick={hanldeUpCase}>Convert to Uppercase</button>
-                <button className="btn btn-primary mx-2" onClick={hanldeLoCase}>Convert to Lowercase</button>
-                <button className="btn btn-primary mx-2" onClick={hanldeClearAll}>Clear</button>
-                <button className="btn btn-primary mx-2 my-2" onClick={hanldeTitleCase}>Convert to Titlecase</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={hanldeUpCase}>Convert to Uppercase</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={hanldeLoCase}>Convert to Lowercase</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={hanldeClearAll}>Clear</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-2" onClick={hanldeTitleCase}>Convert to Titlecase</button>
 
 
             </div>
             <div className={`container text-${props.mode === 'light' ? 'dark' : 'light'}`}>
                 <h1> Your text summary</h1>
-                <p>{text.split(" ").length} words and {text.length} characters</p>
-                <p>{0.008 * text.split(" ").length} Minutes read</p>
+                {/* here we added filter method so that we can remove the bug which is counting space as a word. */}
+                <p>{text.split(" ").filter((element)=>element.length!==0).length} words and {text.length} characters</p>
+                <p>{0.008 * text.split(" ").filter((element)=>element.length!==0).length} Minutes read</p>
             </div>
             <h2 className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}> Preview</h2>
-            <p className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}>{text.length>0 ?text:"Enter something to preview it here"}</p>
+            <p className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}>{text.length>0 ?text:"Nothing to preview!"}</p>
         </>
     )
 }

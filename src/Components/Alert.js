@@ -9,14 +9,18 @@ import React from 'react'
 
 */
 function Alert(props) {
-    const capatilize = (word)=>{
-        word= word.toLowerCase();
+    const capatilize = (word) => {
+        word = word.toLowerCase();
         return word.charAt(0).toUpperCase() + word.slice(1);
     }
     return (
-        // props.alert && (logical and operator) will eliminate the null pointer error .
-        props.alert && <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
-            <strong>{capatilize(props.alert.type)} </strong>:{props.alert.msg }
+        <div style={{height : '50px'}}>
+            {/* props.alert && (logical and operator) will eliminate the null pointer error . */}
+            {
+                props.alert && <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
+                    <strong>{capatilize(props.alert.type)} </strong>:{props.alert.msg}
+                </div>
+            }
         </div>
     )
 }
