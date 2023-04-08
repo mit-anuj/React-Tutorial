@@ -23,7 +23,7 @@ export default function TextField(props) {
 
     }
     const hanldeTitleCase = () => {
-        const newText = text.split(' ');
+        const newText = text.split(/\s+/);
         let finalText = "", newWord;
         for (let word of newText) {
             newWord = word.charAt(0).toUpperCase() + word.substring(1);
@@ -37,10 +37,6 @@ export default function TextField(props) {
         setText(event.target.value);
         
     }
-    // const changeColor = ()=>{
-    //     if(props.mode === 'blue'){
-    //         backgroundColor: #215121;
-    //     }
 
 
 return (
@@ -65,7 +61,7 @@ return (
         <div className={`container text-${props.mode === 'light' ? 'dark' : 'light'}`}>
             <h1> Your text summary</h1>
             {/* here we added filter method so that we can remove the bug which is counting space as a word. */}
-            <p>{text.split(" ").filter((element) => element.length !== 0).length} words and {text.length} characters</p>
+            <p>{text.split(/\s+/).filter((element) => element.length !== 0).length} words and {text.length} characters</p>
             <p>{0.008 * text.split(" ").filter((element) => element.length !== 0).length} Minutes read</p>
         </div>
         <h2 className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}> Preview</h2>
