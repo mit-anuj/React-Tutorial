@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom'
 
 
 export default function Navbar(props) {
+
+
+
+
+
     return (
-        <nav className={`navbar navbar-expand-lg navabar-${props.mode} bg-${props.mode}`} data-bs-theme={props.mode}>
+        <nav className={`navbar navbar-expand-lg navabar-${props.mode === 'light' ? 'light' : 'dark'} bg-${props.mode === 'light' ? 'light' : 'dark'}`} data-bs-theme={props.mode === 'light' ? 'light' : 'dark'}>
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">{props.title} </Link>
                 {/* <a className="navbar-brand" href="/">{props.title} </a> */}
@@ -23,16 +28,13 @@ export default function Navbar(props) {
                         </li>
 
                     </ul>
-                    {/* <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success
-                        " type="submit">Search</button>
-                    </form> */}
 
                 </div>
-                <button type="button" onClick={props.toggleMode} value='green'className="btn btn-success">green</button>
-                <button type="button" onClick={props.toggleMode} value='blue' className="btn btn-primary">blue</button>
-                <button type="button" onClick={props.toggleMode} value='light' className="btn btn-light">Light</button>
+                <div className="d-flex">
+                    <button type="button" onClick={() => { props.changeMode('green') }} value='green' className="btn btn-success rounded mx-2">green</button>
+                    <button type="button" onClick={() => { props.changeMode('blue') }} value='blue' className="btn btn-primary rounded mx-2">blue</button>
+                    <button type="button" onClick={() => { props.changeMode('light') }} value='light' className="btn btn-light rounded mx-2">Light</button>
+                </div>
                 {/* disabled switch */}
                 {/* <div className={`form-check form-switch text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
                     <input className="form-check-input mx-1" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
